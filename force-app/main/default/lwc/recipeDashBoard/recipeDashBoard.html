@@ -1,0 +1,13 @@
+<template>
+    <c-recipe-search-comp  onsearch={handleSearchValue} onrandom={handleRandomSearch}></c-recipe-search-comp>
+
+    <template if:true= {recipeLists}>
+        <c-recipe-list recipe={recipeLists} ></c-recipe-list>
+    </template>
+    <template if:true= {callrandom}>
+        <c-recipe-list call-random={callrandom} ></c-recipe-list>
+    </template>
+    
+    
+    
+</template>

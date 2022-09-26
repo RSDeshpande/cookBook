@@ -1,0 +1,17 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Recipies" >
+        <div class="slds-p-around_small ">
+            <lightning-input type="text" label="Search By Ingredient" value={searchKey} onchange={handleChange}></lightning-input>
+        </div>
+        <br>
+        <div class='slds-m-left_small'>
+            <lightning-button variant="brand" label="Search" onclick={handleSearch}>
+            </lightning-button> 
+            &nbsp; &nbsp;
+            <lightning-button variant="brand" label="Random Recipe" onclick={handleRandomSearch}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+        
+    
+</template>

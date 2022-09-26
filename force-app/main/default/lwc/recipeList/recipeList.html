@@ -1,0 +1,24 @@
+<template>
+    <template  if:true={searchTemplate}>
+        <lightning-card title="Recipes For Your Search" >
+            <div class='slds-m-around_small'>
+       <template for:each={recipe} for:item='item'>
+           <p key={item.id}><b>{item.title}</b></p>
+           <p key={item.id}><b>{item.sourceUrl}</b></p>   
+       </template>
+    </div>
+    </lightning-card>
+    </template>
+
+       <template if:true={callRandom} >
+           
+        <lightning-card title="Random Recipe" >
+            <div class='slds-m-around_small'>
+               <a href={sourceURL}><b>{title}</b></a><br><br>
+                <p><slot name='summary'></slot></p><br>
+                <p>{time}</p><br>
+            </div>
+        </lightning-card>
+    
+    </template>
+</template>
