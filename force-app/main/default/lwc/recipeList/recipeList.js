@@ -15,7 +15,7 @@ export default class RecipeList extends LightningElement {
     price;
     time;
     sourceURL;
-
+    image;
 
     connectedCallback(){
         if(this.callRandom==true){
@@ -24,6 +24,7 @@ export default class RecipeList extends LightningElement {
         }
         else{
             this.searchTemplate=true;
+            console.log(this.recipe);
         }
     }
 
@@ -50,6 +51,8 @@ export default class RecipeList extends LightningElement {
             this.sourceURL = this.selectedRandomRecipe.sourceUrl;
             this.price = this.selectedRandomRecipe.price;
             this.time = this.selectedRandomRecipe.time;
+            this.image = this.selectedRandomRecipe.image;
+
         })
         .catch((error)=>{
             console.log(error);

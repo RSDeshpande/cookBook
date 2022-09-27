@@ -1,0 +1,10 @@
+.randomImage{
+    max-width: 50%;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    border-color: firebrick;
+    border-style:groove;
+    
+}
+

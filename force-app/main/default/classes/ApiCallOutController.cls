@@ -37,7 +37,7 @@ public class ApiCallOutController {
     {
         Http http = new Http();
         HttpRequest req = new HttpRequest();
-        req.setEndpoint(URL+'findByIngredients?ingredients='+ingredient+'&number=10&apiKey='+API_KEY);
+        req.setEndpoint(URL+'findByIngredients?ingredients='+ingredient+'&number=5&apiKey='+API_KEY);
         req.setMethod('GET');
         
         HttpResponse res = http.send(req);
