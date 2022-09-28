@@ -1,17 +1,22 @@
 import getRecipeById from '@salesforce/apex/ApiCallOutController.getRecipeById';
 import getRandomRecipie from '@salesforce/apex/ApiCallOutController.getRandomRecipie';
 import { LightningElement, api } from 'lwc';
+import fetchBulkInfo from '@salesforce/apex/ApiCallOutController.fetchBulkInfo';
 
 export default class RecipeList extends LightningElement {
 
     @api recipe=[];
+    @api bulkInfo=[];
     @api callRandom = false;
     searchTemplate=false;
+    idString='';
+    bulkInfoString;
     random=[];
     selectedRandomRecipe;
     recipeId;
     title;
     summary;
+    searchSummary;
     price;
     time;
     sourceURL;
@@ -24,7 +29,10 @@ export default class RecipeList extends LightningElement {
         }
         else{
             this.searchTemplate=true;
-            console.log(this.recipe);
+            this.idString = this.bulkInfo.toString();
+            console.log(this.idString);
+            this.getBulkInfo();
+            
         }
     }
 
@@ -58,4 +66,18 @@ export default class RecipeList extends LightningElement {
             console.log(error);
         })
     }
+
+    getBulkInfo(){
+        fetchBulkInfo({ids: this.idString})
+        .then((result)=>{
+            
+            this.bulkInfoString = JSON.parse(result);
+            console.log(this.bulkInfoString);
+            
+        })
+        .catch((error)=>{
+            console.log(error);
+        });
+    }
+
 }

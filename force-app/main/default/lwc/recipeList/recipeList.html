@@ -2,13 +2,16 @@
     <template  if:true={searchTemplate}>
         <lightning-card title="Recipes For Your Search" >
             <div class='slds-m-around_small'>
-       <template for:each={recipe} for:item='item'>
-           <lightning-layout multiple-rows key={item.id}>
-               <lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6" large-device-size="3" >
+       <template for:each={bulkInfoString} for:item='item'>
+           <lightning-layout multiple-rows vertical-align="center" key={item.id}>
+               <lightning-layout-item size="12" padding="around-small" class="slds-text-heading_medium" >
                 <p><b>{item.title}</b></p>
                </lightning-layout-item>
-               <lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6" large-device-size="3">
-                <img src={item.image} class="searchImage"/>
+               <lightning-layout-item size="12" padding="around-small" >
+                <a href={item.sourceUrl}><img src={item.image} class="searchImage"/></a>
+               </lightning-layout-item>
+               <lightning-layout-item size="12" class="slds-m-to_medium" >
+                <lightning-formatted-rich-text value={item.summary}></lightning-formatted-rich-text>
                </lightning-layout-item>
            </lightning-layout>
        </template>
@@ -20,7 +23,7 @@
            
         <lightning-card title="Random Recipe" >
             <div class='slds-m-around_small'>
-               <a href={sourceURL}><b>{title}</b></a><br><br>
+               <a href={sourceURL} class="slds-text-heading_medium"><b>{title}</b></a><br><br>
                <img src={image} class='randomImage'/>
                 <p><slot name='summary'></slot></p><br>
                 <p>{time}</p><br>

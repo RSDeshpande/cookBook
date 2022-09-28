@@ -37,7 +37,22 @@ public class ApiCallOutController {
     {
         Http http = new Http();
         HttpRequest req = new HttpRequest();
-        req.setEndpoint(URL+'findByIngredients?ingredients='+ingredient+'&number=5&apiKey='+API_KEY);
+        req.setEndpoint(URL+'findByIngredients?ingredients='+ingredient+'&number=3&apiKey='+API_KEY);
+        req.setMethod('GET');
+        
+        HttpResponse res = http.send(req);
+        if(res.getStatusCode()==200){
+            return res.getBody();
+		}
+        return '';
+    }
+
+    @AuraEnabled
+    public static string fetchBulkInfo(string ids){
+        Http http = new Http();
+        HttpRequest req = new HttpRequest();
+       // https://api.spoonacular.com/recipes/informationBulk?ids=715538,716429
+        req.setEndpoint(URL+'informationBulk?ids='+ids+'&apiKey='+API_KEY);
         req.setMethod('GET');
         
         HttpResponse res = http.send(req);
